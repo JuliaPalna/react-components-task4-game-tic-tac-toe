@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.button-restart {
+    margin-top: 50px;
+    padding: 0.5em 0.75em;
+    border: none;
+    font-size: 18px;
+    background-color: rgb(2, 69, 2);
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+}
+
+.button-restart:hover {
+    background-color: rgb(3, 109, 3);
+}
+
+.button-restart:focus,
+.button-restart:focus-visible {
+    background-color: rgb(3, 109, 3);
+}
