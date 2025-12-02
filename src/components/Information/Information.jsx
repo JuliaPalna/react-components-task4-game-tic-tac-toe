@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { InformationLayout } from './InformationLayout';
 
 export const Information = ({ data }) => {
@@ -13,4 +14,12 @@ export const Information = ({ data }) => {
     }
 
     return <InformationLayout value={value} />;
+};
+
+Information.propTypes = {
+    data: {
+        currentPlayer: PropTypes.oneOf[('X', 'O')],
+        isDraw: PropTypes.bool.isRequired,
+        isGameEnded: PropTypes.bool.isRequired,
+    },
 };

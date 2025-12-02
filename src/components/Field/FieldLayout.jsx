@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from '../../styles/field.module.css';
 
 export const FieldLayout = ({ field }) => {
@@ -14,4 +15,8 @@ export const FieldLayout = ({ field }) => {
             })}
         </ul>
     );
+};
+
+FieldLayout.propTypes = {
+    field: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
