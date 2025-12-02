@@ -3,21 +3,29 @@ import { Field } from '../Field';
 import { Information } from '../Information';
 import styles from '../../styles/game.module.css';
 
-export const GameLayout = ({ onClick, field, ...informationData }) => {
+export const GameLayout = ({
+    restartGame,
+    changeField,
+    field,
+    ...informationData
+}) => {
     return (
-        <div className={styles.container} onClick={onClick}>
+        <div className={styles.container}>
             <h1>GAME</h1>
 
             <Information data={informationData} />
-            <Field field={field} />
+            <Field field={field} onClick={changeField} />
 
-            <button className={styles['button-restart']}>Начать заново</button>
+            <button className={styles['button-restart']} onClick={restartGame}>
+                Начать заново
+            </button>
         </div>
     );
 };
 
 Information.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    restartGame: PropTypes.func.isRequired,
+    changeField: PropTypes.func.isRequired,
     field: PropTypes.arrayOf(PropTypes.string).isRequired,
     currentPlayer: PropTypes.oneOf[('X', 'O')],
     isDraw: PropTypes.bool.isRequired,

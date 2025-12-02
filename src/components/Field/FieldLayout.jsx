@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import styles from '../../styles/field.module.css';
 
-export const FieldLayout = ({ field }) => {
+export const FieldLayout = ({ field, onClick }) => {
     return (
-        <ul className={styles.list}>
+        <ul className={styles.list} onClick={onClick}>
             {field.map((value, index) => {
                 return (
                     <li key={index}>
@@ -18,5 +18,6 @@ export const FieldLayout = ({ field }) => {
 };
 
 FieldLayout.propTypes = {
+    onClick: PropTypes.func.isRequired,
     field: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

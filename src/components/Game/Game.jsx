@@ -1,37 +1,41 @@
 import { useState } from 'react';
 import { GameLayout } from './GameLayout';
-import { field, WIN_PATTERNS } from '../../variables/field';
+import { initialField, WIN_PATTERNS } from '../../variables/field';
 import { checkWinner, checkNotFindEmptyCell } from '../../utils/utils';
 
 export const Game = () => {
     const [currentPlayer, setCurrentPlayer] = useState('X');
     const [isGameEnded, setIsGameEnded] = useState(false);
     const [isDraw, setIsDraw] = useState(false);
+    const [field, setField] = useState(initialField);
 
-    const handelClickRestart = () => {
+    const restartGame = () => {
         setCurrentPlayer('X');
         setIsGameEnded(false);
         setIsDraw(false);
-
-        for (let i = 0; i < field.length; i++) {
-            field[i] = '';
-        }
+        setField(initialField);
     };
 
-    const handelClickField = (cell) => {
-        if (field[cell] !== '') {
+    const changeField = ({ target }) => {
+        const currentcCell = target.dataset.key;
+
+        if (field[currentcCell] !== '' || isGameEnded) {
             return;
         }
 
-        field[cell] = currentPlayer;
+        const newField = [...field];
+        newField[currentcCell] = currentPlayer;
 
-        if (checkWinner(field, WIN_PATTERNS)) {
+        setField(newField);
+
+        if (checkWinner(newField, WIN_PATTERNS)) {
             setIsGameEnded(true);
             return;
         }
 
-        if (checkNotFindEmptyCell(field)) {
+        if (checkNotFindEmptyCell(newField)) {
             setIsDraw(true);
+            return;
         }
 
         if (currentPlayer === 'X') {
@@ -41,21 +45,10 @@ export const Game = () => {
         }
     };
 
-    const handelClick = ({ target }) => {
-        if (target.className.includes('button-restart')) {
-            handelClickRestart();
-            return;
-        }
-
-        if (target.className.includes('cell')) {
-            const currentCell = target.dataset.key;
-            handelClickField(currentCell);
-        }
-    };
-
     return (
         <GameLayout
-            onClick={handelClick}
+            restartGame={restartGame}
+            changeField={changeField}
             field={field}
             currentPlayer={currentPlayer}
             isDraw={isDraw}
