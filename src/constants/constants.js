@@ -1,4 +1,4 @@
-export const initialField = ['', '', '', '', '', '', '', '', ''];
+export const initialFields = ['', '', '', '', '', '', '', '', ''];
 
 export const WIN_PATTERNS = [
     [0, 1, 2],

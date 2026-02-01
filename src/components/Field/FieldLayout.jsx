@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import styles from '../../styles/field.module.css';
 
-export const FieldLayout = ({ field, onClick }) => {
+export const FieldLayout = ({ fields, onClick }) => {
     return (
         <ul className={styles.list} onClick={onClick}>
-            {field.map((value, index) => {
+            {fields.map((value, index) => {
                 return (
                     <li key={index}>
                         <button data-key={index} className={styles['cell']}>
@@ -19,5 +19,5 @@ export const FieldLayout = ({ field, onClick }) => {
 
 FieldLayout.propTypes = {
     onClick: PropTypes.func.isRequired,
-    field: PropTypes.arrayOf(PropTypes.string).isRequired,
+    fields: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
