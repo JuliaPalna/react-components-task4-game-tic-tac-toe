@@ -1,36 +1,36 @@
-import { initialField } from './constants/constants';
+// import { initialField } from './constants/constants';
 
-const initialState = {
-    currentPlayer: 'X',
-    field: initialField,
-    isGameEnded: false,
-};
+// const initialState = {
+//     currentPlayer: 'X',
+//     field: initialField,
+//     isGameEnded: false,
+// };
 
-export const gameReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'SET_CURRENT_PLAYER':
-            return {
-                ...state,
-                currentPlayer: action.payload,
-            };
+// export const gameReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case 'SET_CURRENT_PLAYER':
+//             return {
+//                 ...state,
+//                 currentPlayer: action.payload,
+//             };
 
-        case 'SET_FIELD': {
-            const newField = [...state.field];
-            newField[action.payload] = state.currentPlayer;
+//         case 'SET_FIELD': {
+//             const newField = [...state.field];
+//             newField[action.payload] = state.currentPlayer;
 
-            return {
-                ...state,
-                field: newField,
-            };
-        }
+//             return {
+//                 ...state,
+//                 field: newField,
+//             };
+//         }
 
-        case 'SET_STATUS_GAME':
-            return { ...state, isGameEnded: true };
+//         case 'SET_STATUS_GAME':
+//             return { ...state, isGameEnded: true };
 
-        case 'RESTART_GAME':
-            return initialState;
+//         case 'RESTART_GAME':
+//             return initialState;
 
-        default:
-            return state;
-    }
-};
+//         default:
+//             return state;
+//     }
+// };

@@ -1,1 +1,3 @@
-export const fieldSelector = (state) => state.fields;
+export const fieldSelector = (state) => {
+    return state.field;
+};

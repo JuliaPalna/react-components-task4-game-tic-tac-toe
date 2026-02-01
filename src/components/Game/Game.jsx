@@ -1,9 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { RESTART_GAME } from '../actions';
 import { GameLayout } from './GameLayout';
-import { store } from '../../store';
 
 export const Game = () => {
+    const dispatch = useDispatch();
     const onRestartGame = () => {
-        store.dispatch({ type: 'RESTART_GAME' });
+        dispatch(RESTART_GAME);
     };
 
     return <GameLayout onRestartGame={onRestartGame} />;
