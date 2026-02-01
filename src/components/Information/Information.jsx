@@ -1,29 +1,27 @@
-import { InformationLayout } from './InformationLayout';
-import { store } from '../../store';
+import { useSelector } from 'react-redux';
 import { checkNotFindEmptyCell } from '../../utils/utils';
-import { useEffect, useState } from 'react';
+import { InformationLayout } from './InformationLayout';
+import {
+    currentPlayerSelector,
+    fieldSelector,
+    isGameEndedSelector,
+} from '../../selectors';
 
 export const Information = () => {
-    const [state, setState] = useState(() => store.getState());
-
-    useEffect(() => {
-        const unsubscribe = store.subscribe(() => {
-            setState(store.getState());
-        });
-
-        return () => unsubscribe();
-    }, []);
+    const currentPlayer = useSelector(currentPlayerSelector);
+    const field = useSelector(fieldSelector);
+    const isGameEnded = useSelector(isGameEndedSelector);
 
     let value = '';
 
-    if (state.isGameEnded) {
-        if (checkNotFindEmptyCell(state.fields)) {
+    if (isGameEnded) {
+        if (checkNotFindEmptyCell(field)) {
             value = 'Ничья';
         } else {
-            value = `Победа: ${state.currentPlayer}`;
+            value = `Победа: ${currentPlayer}`;
         }
     } else {
-        value = `Ходит: ${state.currentPlayer}`;
+        value = `Ходит: ${currentPlayer}`;
     }
 
     return <InformationLayout value={value} />;

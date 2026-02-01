@@ -1,8 +1,8 @@
-import { initialFields } from './constants/constants';
+import { initialField } from './constants/constants';
 
 const initialState = {
     currentPlayer: 'X',
-    fields: initialFields,
+    field: initialField,
     isGameEnded: false,
 };
 
@@ -15,12 +15,12 @@ export const gameReducer = (state = initialState, action) => {
             };
 
         case 'SET_FIELD': {
-            const newFields = [...state.fields];
-            newFields[action.payload] = state.currentPlayer;
+            const newField = [...state.field];
+            newField[action.payload] = state.currentPlayer;
 
             return {
                 ...state,
-                fields: newFields,
+                field: newField,
             };
         }
 
