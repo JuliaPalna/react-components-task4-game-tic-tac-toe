@@ -14,15 +14,11 @@ export const gameReducer = (state = initialState, action) => {
                 currentPlayer: action.payload,
             };
 
-        case 'SET_FIELD': {
-            const newField = [...state.field];
-            newField[action.payload] = state.currentPlayer;
-
+        case 'SET_FIELD':
             return {
                 ...state,
-                field: newField,
+                field: action.payload,
             };
-        }
 
         case 'SET_STATUS_GAME':
             return { ...state, isGameEnded: true };

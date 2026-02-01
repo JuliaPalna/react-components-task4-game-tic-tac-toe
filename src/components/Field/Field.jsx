@@ -26,17 +26,18 @@ export const Field = () => {
             return;
         }
 
-        store.dispatch({ type: 'SET_FIELD', payload: target.dataset.key });
+        const newField = [...currentState.field];
+        newField[currentCell] = currentState.currentPlayer;
 
-        const updatedState = store.getState();
+        store.dispatch({ type: 'SET_FIELD', payload: newField });
 
         if (
-            checkWinner(updatedState.field, WIN_PATTERNS) ||
-            checkNotFindEmptyCell(updatedState.field)
+            checkWinner(newField, WIN_PATTERNS) ||
+            checkNotFindEmptyCell(newField)
         ) {
             store.dispatch({ type: 'SET_STATUS_GAME', payload: true });
         } else {
-            const newPlayer = updatedState.currentPlayer === 'X' ? 'O' : 'X';
+            const newPlayer = currentState.currentPlayer === 'X' ? 'O' : 'X';
 
             store.dispatch({
                 type: 'SET_CURRENT_PLAYER',
