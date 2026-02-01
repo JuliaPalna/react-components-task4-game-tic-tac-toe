@@ -1,4 +1,4 @@
 import { createStore } from 'redux';
-import { fieldReducer } from './reducer';
+import { gameReducer } from './reducer';
 
-export const store = createStore(fieldReducer);
+export const store = createStore(gameReducer);

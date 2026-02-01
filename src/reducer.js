@@ -6,7 +6,7 @@ const initialState = {
     isGameEnded: false,
 };
 
-export const fieldReducer = (state = initialState, action) => {
+export const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_CURRENT_PLAYER':
             return {
