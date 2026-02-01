@@ -17,7 +17,7 @@ export const Information = () => {
     let value = '';
 
     if (state.isGameEnded) {
-        if (checkNotFindEmptyCell(state.fields)) {
+        if (checkNotFindEmptyCell(state.field)) {
             value = 'Ничья';
         } else {
             value = `Победа: ${state.currentPlayer}`;

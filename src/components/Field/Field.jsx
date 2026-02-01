@@ -20,7 +20,7 @@ export const Field = () => {
         const currentState = store.getState();
 
         if (
-            currentState.fields[currentCell] !== '' ||
+            currentState.field[currentCell] !== '' ||
             currentState.isGameEnded
         ) {
             return;
@@ -31,8 +31,8 @@ export const Field = () => {
         const updatedState = store.getState();
 
         if (
-            checkWinner(updatedState.fields, WIN_PATTERNS) ||
-            checkNotFindEmptyCell(updatedState.fields)
+            checkWinner(updatedState.field, WIN_PATTERNS) ||
+            checkNotFindEmptyCell(updatedState.field)
         ) {
             store.dispatch({ type: 'SET_STATUS_GAME', payload: true });
         } else {
@@ -45,5 +45,5 @@ export const Field = () => {
         }
     };
 
-    return <FieldLayout fields={state.fields} onClick={onClick} />;
+    return <FieldLayout field={state.field} onClick={onClick} />;
 };
