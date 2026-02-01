@@ -21,7 +21,7 @@ export const gameReducer = (state = initialState, action) => {
             };
 
         case 'SET_STATUS_GAME':
-            return { ...state, isGameEnded: true };
+            return { ...state, isGameEnded: action.payload };
 
         case 'RESTART_GAME':
             return initialState;
