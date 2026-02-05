@@ -7,7 +7,7 @@ import {
 import { WIN_PATTERNS } from '../../constants/constants';
 import { checkNotFindEmptyCell, checkWinner } from '../../utils/utils';
 import { FieldLayout } from './FieldLayout';
-import { setCurrentPlayer, setField, setStatusGame } from '../actions';
+import { setCurrentPlayer, setField, setStatusGame } from '../../actions';
 
 export const Field = () => {
     const currentPlayer = useSelector(currentPlayerSelector);
