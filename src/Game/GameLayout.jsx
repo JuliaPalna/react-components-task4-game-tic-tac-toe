@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { Field } from '../Field';
-import { Information } from '../Information';
-import styles from '../../styles/game.module.css';
+import { Field } from '../components/Field';
+import { Information } from '../components/Information';
+import styles from '../styles/game.module.css';
 
 export const GameLayout = ({ onRestartGame }) => {
     return (
