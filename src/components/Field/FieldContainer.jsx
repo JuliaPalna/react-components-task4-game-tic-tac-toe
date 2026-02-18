@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { WIN_PATTERNS } from '../../constants/constants';
 import { checkNotFindEmptyCell, checkWinner } from '../../utils/utils';
-import styles from '../../styles/field.module.css';
 
 export class FieldContainer extends Component {
     clickField = ({ target }) => {
@@ -44,11 +43,27 @@ export class FieldContainer extends Component {
 
     render() {
         return (
-            <ul className={styles.list} onClick={this.clickField}>
+            <ul
+                className="mt-5 p-0
+                            list-none
+                            grid
+                            grid-cols-3"
+                onClick={this.clickField}
+            >
                 {this.props.field.map((value, index) => {
                     return (
-                        <li key={index}>
-                            <button data-key={index} className={styles['cell']}>
+                        <li
+                            key={index}
+                            className="border
+                                        border-solid
+                                        border-color: var(--color-white)"
+                        >
+                            <button
+                                data-key={index}
+                                className="size-16
+                                            text-center
+                                            hover: cursor-pointer"
+                            >
                                 {value}
                             </button>
                         </li>
