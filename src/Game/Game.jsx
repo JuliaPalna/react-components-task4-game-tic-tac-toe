@@ -1,12 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { RESTART_GAME } from '../actions';
-import { GameLayout } from './GameLayout';
+import { GameContainer } from './GameContainer';
 
-export const Game = () => {
-    const dispatch = useDispatch();
-    const onRestartGame = () => {
-        dispatch(RESTART_GAME);
-    };
+const mapGameDispatchToProps = (dispatch) => ({
+    onRestartGame: () => dispatch(RESTART_GAME),
+});
 
-    return <GameLayout onRestartGame={onRestartGame} />;
-};
+export const Game = connect(null, mapGameDispatchToProps)(GameContainer);

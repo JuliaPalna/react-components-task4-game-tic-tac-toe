@@ -1,28 +1,12 @@
-import { useSelector } from 'react-redux';
-import { checkNotFindEmptyCell } from '../../utils/utils';
-import { InformationLayout } from './InformationLayout';
-import {
-    currentPlayerSelector,
-    fieldSelector,
-    isGameEndedSelector,
-} from '../../selectors';
+import { connect } from 'react-redux';
+import { InformationContainer } from './InformationContainer';
 
-export const Information = () => {
-    const currentPlayer = useSelector(currentPlayerSelector);
-    const field = useSelector(fieldSelector);
-    const isGameEnded = useSelector(isGameEndedSelector);
+const mapInformationStateToProps = (state) => ({
+    field: state.field,
+    currentPlayer: state.currentPlayer,
+    isGameEnded: state.isGameEnded,
+});
 
-    let value = '';
-
-    if (isGameEnded) {
-        if (checkNotFindEmptyCell(field)) {
-            value = 'Ничья';
-        } else {
-            value = `Победа: ${currentPlayer}`;
-        }
-    } else {
-        value = `Ходит: ${currentPlayer}`;
-    }
-
-    return <InformationLayout value={value} />;
-};
+export const Information = connect(mapInformationStateToProps)(
+    InformationContainer,
+);
